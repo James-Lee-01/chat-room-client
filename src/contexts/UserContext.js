@@ -1,15 +1,15 @@
-// UserContext.js
+// UserContext.jsx
 import { createContext, useContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
-
+import { v4 as uuidv4 } from "uuid"; // 使用 uuidv4 來產生亂數
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [username, setUsername] = useState(sessionStorage.getItem("chatUsername") || "");
-  const [userId, setUserId] = useState(sessionStorage.getItem("chatUserId") || "");
+  const [username, setUsername] = useState(sessionStorage.getItem("chatUsername") || ""); // username
+  const [userId, setUserId] = useState(sessionStorage.getItem("chatUserId") || ""); // userId
 
 
+  // 使用者登入，使用sessionStorage來儲存
   const login = (name) => {
     const newUserId = uuidv4();
     sessionStorage.setItem("chatUsername", name);
@@ -18,6 +18,7 @@ export const UserProvider = ({ children }) => {
     setUserId(newUserId);
   };
 
+  // 使用者登出
   const logout = () => {
     sessionStorage.removeItem("chatUsername");
     sessionStorage.removeItem("chatUserId");
