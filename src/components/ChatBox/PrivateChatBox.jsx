@@ -42,7 +42,7 @@ const ChatBox = ({ roomCode }) => {
 
   useEffect(() => {
     //建立連線
-    const socketInstance = io("http://localhost:3001", {
+    const socketInstance = io("https://chat-room-server-9eu7.onrender.com", {
       withCredentials: true,
     });
 
