@@ -7,7 +7,7 @@ Secret Chat Room 是個基於 Socket.io 建立的無痕聊天的網站，UI 使�
 - [後端 repo](https://github.com/James-Lee-01/chat-room-server)
 
 
-<img src="./public/screenshots/home.png" alt="Home" >
+<img src="public/screenshots/Home.png" alt="Home" >
 
 ## Features - 產品功能
 - 自訂暱稱。
