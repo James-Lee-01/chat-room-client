@@ -43,6 +43,10 @@ function ChatPage() {
           borderRadius: "20px",
           padding: "2rem",
           textAlign: "center",
+
+          display: "flex",
+          flexDirection: "column", // 將子元素設為垂直排列
+          height: "100%", // 讓 Container 高度填滿整個父元素
         }}
         maxWidth={false}
       >
@@ -50,18 +54,19 @@ function ChatPage() {
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.5)", // 珍珠白半透明背景色
             borderRadius: "25px",
-            padding: "2rem 1.25rem",
+            padding: "2rem 0",
+            flex: 1, // 自動填滿剩餘空間,
+            display: "flex",
+            flexDirection: "column", // 將子元素設為垂直排列
+            height: "90%",
           }}
         >
-          <Typography
-            variant="h1"
-            component='h1'
-          >
+          <Typography variant='h1' component='h1'>
             Hi, {username}! <br /> This is Private Room: "{roomCode}"
           </Typography>
           <Box
             sx={{
-              margin: "1rem 0",
+              margin: "0.5rem 0",
               display: "flex",
               justifyContent: "center",
               gap: "1rem",
@@ -74,7 +79,7 @@ function ChatPage() {
               Logout
             </Button>
           </Box>
-          <PrivateChatBox roomCode={roomCode} /> 
+          <PrivateChatBox roomCode={roomCode} />
         </Box>
       </Container>
     </Container>

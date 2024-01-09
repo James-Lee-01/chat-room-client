@@ -1,10 +1,17 @@
 import { useState, useEffect, useRef } from "react";
-import { Paper, Typography, TextField, Button, Box, Grid } from "@mui/material";
+import {
+  Paper,
+  Typography,
+  TextField,
+  Button,
+  Box,
+  Grid,
+  Container
+} from "@mui/material";
 import { io } from "socket.io-client";
 import { useUser } from "../../contexts/UserContext";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
-console.log(serverUrl)
 
 const ChatBox = ({ roomCode }) => {
   const { username, userId } = useUser(); // 導入使用者資訊
@@ -118,7 +125,14 @@ const ChatBox = ({ roomCode }) => {
   }, [messages]);
 
   return (
-    <>
+    <Container
+      sx={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        height: "85%",
+      }}
+    >
       {/* 在線使用者列表 */}
       <Box>
         <Typography variant='subtitle1' color='textSecondary'>
@@ -154,10 +168,11 @@ const ChatBox = ({ roomCode }) => {
       <Paper
         sx={{
           padding: "1rem 0.5rem",
-          height: "500px",
+          flex: "1",
           overflow: "auto",
           background: "rgba(255, 255, 255, 0)",
           border: "2px solid #E6ECF0",
+          height: "100%",
         }}
         elevation={0}
       >
@@ -247,6 +262,7 @@ const ChatBox = ({ roomCode }) => {
               ))}
             </Grid>
           </Box>
+          {/* 輸入框與送出按鈕 */}
           <Box
             sx={{
               marginTop: 2,
@@ -304,7 +320,7 @@ const ChatBox = ({ roomCode }) => {
           </Box>
         </Box>
       </Paper>
-    </>
+    </Container>
   );
 };
 

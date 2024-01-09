@@ -54,8 +54,8 @@ function ChatPage() {
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.5)", // 珍珠白半透明背景色
             borderRadius: "25px",
-            padding: "2rem 1.25rem",
-            flex: 1, // 自動填滿 Container 的剩餘空間,
+            padding: "2rem 0",
+            flex: 1, // 自動填滿剩餘空間,
             display: "flex",
             flexDirection: "column", // 將子元素設為垂直排列
             height: "90%",
@@ -66,7 +66,7 @@ function ChatPage() {
           </Typography>
           <Box
             sx={{
-              margin: "1rem 0",
+              margin: "0.5rem 0",
               display: "flex",
               justifyContent: "center",
               gap: "1rem",
