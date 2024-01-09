@@ -54,10 +54,7 @@ function ChatPage() {
           }}
         >
           <Typography
-            sx={{
-              fontSize: "1.5rem",
-              lineHeight: "2rem",
-            }}
+            variant="h1"
             component='h1'
           >
             Hi, {username}! <br /> This is Private Room: "{roomCode}"

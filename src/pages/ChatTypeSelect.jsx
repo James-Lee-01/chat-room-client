@@ -4,11 +4,13 @@ import { Button, Container, Typography, Box, TextField } from "@mui/material";
 import { useUser } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
+
 const ChatTypeSelect = () => {
   const { username, logout } = useUser();
   const navigate = useNavigate();
   const [roomCode, setRoomCode] = useState("");
   const [error, setError] = useState(false);
+
 
   // 進入公開聊天室的邏輯
   const handleEnterPublicChat = () => {
@@ -69,10 +71,7 @@ const ChatTypeSelect = () => {
           }}
         >
           <Typography
-            sx={{
-              fontSize: "2rem",
-              marginBottom: "1rem",
-            }}
+            variant='h1'
             component='h1'
           >
             Welcome, {username}! <br /> Choose Your Chat Room

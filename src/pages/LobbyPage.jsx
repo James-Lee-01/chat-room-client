@@ -79,6 +79,7 @@ function LobbyPage() {
               fontSize: "2rem",
               marginBottom: "1rem",
             }}
+            variant="h1"
             component='h1'
           >
             Secret Chat Room

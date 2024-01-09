@@ -5,10 +5,13 @@ import {
   TextField,
   Button,
   Box,
-  Grid
+  Grid,
+  Container
 } from "@mui/material";
 import { io } from "socket.io-client";
 import { useUser } from "../../contexts/UserContext";
+
+const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const ChatBox = () => {
   const { username, userId } = useUser(); // 導入使用者資訊
@@ -49,7 +52,7 @@ const ChatBox = () => {
 
   useEffect(() => {
     //建立連線
-    const socketInstance = io("https://chat-room-server-9eu7.onrender.com", {
+    const socketInstance = io(serverUrl, {
       withCredentials: true,
     });
 
@@ -88,6 +91,11 @@ const ChatBox = () => {
           systemMessage: true,
         },
       ]);
+
+      // 更新在線上使用者列表
+      setOnlineUsers((prevOnlineUsers) =>
+        prevOnlineUsers.filter((user) => user.userId !== userId)
+      );
     });
 
     // 監聽在線上使用者列表的事件
@@ -117,7 +125,14 @@ const ChatBox = () => {
   }, [messages]);
 
   return (
-    <>
+    <Container
+      sx={{
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        height: "85%",
+      }}
+    >
       {/* 在線使用者列表 */}
       <Box>
         <Typography variant='subtitle1' color='textSecondary'>
@@ -153,10 +168,11 @@ const ChatBox = () => {
       <Paper
         sx={{
           padding: "1rem 0.5rem",
-          height: "500px",
+          flex: "1",
           overflow: "auto",
           background: "rgba(255, 255, 255, 0)",
           border: "2px solid #E6ECF0",
+          height: "100%",
         }}
         elevation={0}
       >
@@ -246,6 +262,7 @@ const ChatBox = () => {
               ))}
             </Grid>
           </Box>
+          {/* 輸入框與送出按鈕 */}
           <Box
             sx={{
               marginTop: 2,
@@ -303,7 +320,7 @@ const ChatBox = () => {
           </Box>
         </Box>
       </Paper>
-    </>
+    </Container>
   );
 };
 

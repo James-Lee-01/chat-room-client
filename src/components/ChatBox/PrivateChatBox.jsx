@@ -3,6 +3,9 @@ import { Paper, Typography, TextField, Button, Box, Grid } from "@mui/material";
 import { io } from "socket.io-client";
 import { useUser } from "../../contexts/UserContext";
 
+const serverUrl = process.env.REACT_APP_SERVER_URL;
+console.log(serverUrl)
+
 const ChatBox = ({ roomCode }) => {
   const { username, userId } = useUser(); // 導入使用者資訊
   const [message, setMessage] = useState(""); // 訊息輸入框
@@ -42,7 +45,7 @@ const ChatBox = ({ roomCode }) => {
 
   useEffect(() => {
     //建立連線
-    const socketInstance = io("https://chat-room-server-9eu7.onrender.com", {
+    const socketInstance = io(serverUrl, {
       withCredentials: true,
     });
 
@@ -81,6 +84,11 @@ const ChatBox = ({ roomCode }) => {
           systemMessage: true,
         },
       ]);
+
+      // 更新在線上使用者列表
+      setOnlineUsers((prevOnlineUsers) =>
+        prevOnlineUsers.filter((user) => user.userId !== userId)
+      );
     });
 
     // 監聽在線使用者列表的事件

@@ -43,6 +43,10 @@ function ChatPage() {
           borderRadius: "20px",
           padding: "2rem",
           textAlign: "center",
+
+          display: "flex",
+          flexDirection: "column", // 將子元素設為垂直排列
+          height: "100%", // 讓 Container 高度填滿整個父元素
         }}
         maxWidth={false}
       >
@@ -51,15 +55,13 @@ function ChatPage() {
             backgroundColor: "rgba(255, 255, 255, 0.5)", // 珍珠白半透明背景色
             borderRadius: "25px",
             padding: "2rem 1.25rem",
+            flex: 1, // 自動填滿 Container 的剩餘空間,
+            display: "flex",
+            flexDirection: "column", // 將子元素設為垂直排列
+            height: "90%",
           }}
         >
-          <Typography
-            sx={{
-              fontSize: "1.5rem",
-              lineHeight: "2rem",
-            }}
-            component='h1'
-          >
+          <Typography variant='h1' component='h1'>
             Welcome to public chat room, {username}!
           </Typography>
           <Box
