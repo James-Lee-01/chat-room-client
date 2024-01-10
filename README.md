@@ -31,14 +31,17 @@ Secret Chat Room 是個基於 Socket.io 建立的無痕聊天的網站，UI 使�
 > [!CAUTION]
 > 離開聊天室 或 按下重新整理 皆會自動清除所有聊天紀錄。
 
+## Demo - 簡易展示
+<img src="public/screenshots/secret-chatroom-demo-gif.gif" alt="demo" width="50%">
+
 ## Setup and Activation - 環境建置與啟用
 ### 後端：
 1. 請先確認已安裝 Node.js 與 npm。
 2. 開啟終端機(Terminal)進入到存放後端專案的本機位置，執行以下將 **「後端」** 專案 clone ： 
 
-    ```
-    git clone https://github.com/James-Lee-01/chat-room-server.git
-    ```
+   ```bash
+   git clone https://github.com/James-Lee-01/chat-room-server.git
+   ```
 3. 進入存放此專案的資料夾，開啟之後，透過終端機輸入：
 
    ```bash
@@ -65,21 +68,26 @@ Secret Chat Room 是個基於 Socket.io 建立的無痕聊天的網站，UI 使�
 1. 請先確認已安裝 Node.js 與 npm。
 2. 開啟終端機(Terminal)進入到存放專案的本機位置，執行以下將 **「前端」** 專案 clone ： 
 
-    ```
-    git clone https://github.com/James-Lee-01/chat-room-client.git
-    ```
+   ```bash
+   git clone https://github.com/James-Lee-01/chat-room-client.git
+   ```
 3. 進入存放此專案的資料夾，開啟之後，透過終端機輸入：
 
    ```bash
    npm install
    ```
 
-4. 安裝完畢後，執行程式：
-    ```
-    npm start
-    ```
+4. 新增 `.env` 檔，設定 serverUrl 需使用的 REACT_APP_SERVER_URL：
+   ```
+   REACT_APP_SERVER_URL = http://localhost:3001
+   ```
 
-5. 打開瀏覽器進入到以下網址：`http://localhost:3000` 執行，出現以下訊息則代表成功執行：
+5. 安裝完畢後，執行程式：
+   ```bash
+   npm start
+   ```
+
+6. 打開瀏覽器進入到以下網址：`http://localhost:3000` 執行，出現以下訊息則代表成功執行：
 
    ```bash
    webpack compiled successfully
