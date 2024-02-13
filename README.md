@@ -94,7 +94,7 @@ Secret Chat Room 是個基於 Socket.io 建立的無痕聊天的網站，UI 使�
    ```
     
 
-6. 若欲暫停使用請執行以下：
+7. 若欲暫停使用請執行以下：
 
    ```bash
    ctrl + c
