@@ -1,6 +1,7 @@
 // UserContext.jsx
 import { createContext, useContext, useState } from "react";
 import { v4 as uuidv4 } from "uuid"; // 使用 uuidv4 來產生亂數
+import PropTypes from "prop-types";
 
 const UserContext = createContext();
 
@@ -32,6 +33,10 @@ export const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+UserProvider.propTypes = {
+  children: PropTypes.node,
+}
 
 // Error Handling
 export const useUser = () => {
