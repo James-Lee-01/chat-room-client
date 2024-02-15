@@ -12,7 +12,6 @@ import { io } from "socket.io-client";
 import { useUser } from "../../contexts/UserContext";
 import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
-
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
 const ChatBox = ({ roomCode }) => {
@@ -22,7 +21,7 @@ const ChatBox = ({ roomCode }) => {
   const [onlineUsers, setOnlineUsers] = useState([]); // 在線上的使用者列表
   const [socket, setSocket] = useState(null); //Socket.io
   const roomName = roomCode; // 預設聊天室號碼
-  const chatBoxRef = useRef(null); // 聊天室DOM元素
+  const chatBoxRef = useRef(null); // 聊天室DOM元素(供自動下滑用)
 
   //處理發送訊息
   const handleSendMessage = () => {
