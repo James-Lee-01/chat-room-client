@@ -11,6 +11,7 @@ import {
 import { io } from "socket.io-client";
 import { useUser } from "../../contexts/UserContext";
 import PropTypes from "prop-types";
+import { v4 as uuidv4 } from "uuid";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -27,6 +28,7 @@ const ChatBox = ({ roomCode }) => {
   const handleSendMessage = () => {
     if (message.trim() !== "" && socket) {
       const newMessage = {
+        id: uuidv4(), // 使用 uuidv4 來產生亂數ID
         senderId: userId,
         sender: username,
         text: message,
@@ -205,10 +207,10 @@ const ChatBox = ({ roomCode }) => {
             ref={chatBoxRef}
           >
             <Grid container direction='column' spacing={1}>
-              {messages.map((msg, index) => (
+              {messages.map((msg) => (
                 <Grid
                   item
-                  key={index}
+                  key={msg.id}
                   alignSelf={
                     msg.systemMessage
                       ? "center"
