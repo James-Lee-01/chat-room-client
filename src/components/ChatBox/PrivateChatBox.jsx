@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { io } from "socket.io-client";
 import { useUser } from "../../contexts/UserContext";
+import PropTypes from "prop-types";
 
 const serverUrl = process.env.REACT_APP_SERVER_URL;
 
@@ -325,3 +326,7 @@ const ChatBox = ({ roomCode }) => {
 };
 
 export default ChatBox;
+
+ChatBox.propTypes = {
+  roomCode: PropTypes.string,
+}
