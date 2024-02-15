@@ -1,5 +1,5 @@
 // UserContext.jsx
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo, useCallback } from "react";
 import { v4 as uuidv4 } from "uuid"; // 使用 uuidv4 來產生亂數
 import PropTypes from "prop-types";
 
@@ -11,24 +11,26 @@ export const UserProvider = ({ children }) => {
 
 
   // 使用者登入，使用sessionStorage來儲存
-  const login = (name) => {
+  const login = useCallback((name) => {
     const newUserId = uuidv4();
     sessionStorage.setItem("chatUsername", name);
     sessionStorage.setItem("chatUserId", newUserId);
     setUsername(name);
     setUserId(newUserId);
-  };
+  }, [])
 
   // 使用者登出
-  const logout = () => {
+  const logout = useCallback(() => {
     sessionStorage.removeItem("chatUsername");
     sessionStorage.removeItem("chatUserId");
     setUsername("");
     setUserId("");
-  };
+  }, [])
+
+  const contextValue = useMemo(() => ({ username, userId, login, logout }), [username, userId, login, logout]);
 
   return (
-    <UserContext.Provider value={{ username, userId, login, logout }}>
+    <UserContext.Provider value={contextValue}>
       {children}
     </UserContext.Provider>
   );
